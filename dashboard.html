@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  font-family: Arial, sans-serif;
+}
+
+.box {
+  background: rgba(0,0,0,0.4);
+  padding: 30px;
+  border-radius: 16px;
+  width: 320px;
+  color: white;
+  text-align: center;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #e74c3c;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2 id="welcome">مرحبا</h2>
+  <button onclick="logout()">تسجيل الخروج</button>
+</div>
+
+<script>
+// 🔐 حماية الصفحة
+const email = localStorage.getItem("email");
+
+if (!email) {
+  window.location.href = "login.html";
+}
+
+// 🖐️ رسالة الترحيب
+document.getElementById("welcome").innerText = "مرحبا " + email;
+
+// 🚪 تسجيل الخروج
+function logout() {
+  localStorage.clear();
+  window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

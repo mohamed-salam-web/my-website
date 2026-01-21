@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>تسجيل الدخول</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#243b55;
+  font-family:Arial;
+}
+.box{
+  background:#1f2a44;
+  padding:30px;
+  border-radius:12px;
+  width:320px;
+  color:white;
+  text-align:center;
+}
+input,button{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:none;
+  border-radius:8px;
+}
+button{
+  background:#3498db;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>تسجيل الدخول</h2>
+  <form id="loginForm">
+    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+    <input type="password" id="password" placeholder="كلمة المرور" required>
+    <button type="submit">دخول</button>
+  </form>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const savedEmail = localStorage.getItem("email");
+  const savedPassword = localStorage.getItem("password");
+
+  if(email === savedEmail && password === savedPassword){
+    localStorage.setItem("loggedInUser", email);
+    window.location.href = "dashboard.html";
+  }else{
+    alert("البريد الإلكتروني أو كلمة المرور غير صحيحة");
+  }
+});
+</script>
+
+</body>
+</html>
